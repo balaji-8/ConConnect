@@ -24,7 +24,7 @@ import {
   DrawerOverlay,
 } from "@chakra-ui/modal";
 import { BellIcon, ChevronDownIcon } from "@chakra-ui/icons";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import { useDisclosure } from "@chakra-ui/hooks";
 import { ChatState } from "../../context/chatProvider";
@@ -36,6 +36,7 @@ import UserListItem from "../UserAvatar/UserListItem";
 import { getSender } from "../../config/ChatLogics";
 import { Effect } from "react-notification-badge";
 import NotificationBadge from "react-notification-badge/lib/components/NotificationBadge";
+import NotificationSound from "./NotificationSound";
 
 const SideDrawer = () => {
   const [search, setSearch] = useState("");
@@ -123,6 +124,12 @@ const SideDrawer = () => {
       });
     }
   };
+  // useEffect(() => {
+  //   // Fetch notifications from browser storage when component mounts
+  //   const storedNotifications =
+  //     JSON.parse(localStorage.getItem(`${user.name}notifications`)) || [];
+  //   setNotifications(storedNotifications);
+  // }, []);
 
   return (
     <>
@@ -130,20 +137,23 @@ const SideDrawer = () => {
         display="flex"
         justifyContent="space-between"
         alignItems="center"
-        bg="white"
+        bg="rgba(0,0,0,0.1)"
+        backdropFilter="blur(5px)"
+        color="white"
+        boxShadow="2px"
         w="100%"
         p="5px 10px 5px 10px"
-        borderWidth="5px"
+        // borderWidth="5px"
       >
         <Tooltip label="Search users to chat" hasArrow placement="bottom-end">
           <Button variant="ghost" onClick={onOpen}>
             <i class="fas fa-search"></i>
-            <Text d={{ base: "none", md: "flex" }} px="4">
+            <Text display={{ base: "none", md: "flex" }} px="4" color="white">
               Seach User
             </Text>
           </Button>
         </Tooltip>
-        <Text fontSize="2xl" fontFamily="Work sans">
+        <Text fontSize="3xl" fontFamily="Work sans">
           ConConnect
         </Text>
         <div>
@@ -153,14 +163,28 @@ const SideDrawer = () => {
                 count={notifications.length}
                 effect={Effect.SCALE}
               />
+              <NotificationSound />
               <BellIcon fontSize="2xl" m={1} />
             </MenuButton>
-            <MenuList>
+            <MenuList
+              bg="rgba(0,0,0,0.1)"
+              backdropFilter="blur(25px)"
+              display="flex"
+              justifyContent="center"
+              flexDirection="column"
+              position="absolute"
+              right="1rem"
+              top="-3.5rem"
+            >
               {!notifications.length && (
-                <MenuItem>No New Notifications</MenuItem>
+                <MenuItem bg="rgba(0,0,0,0.1)" backdropFilter="blur(25px)">
+                  No New Notifications
+                </MenuItem>
               )}
               {notifications.map((notification) => (
                 <MenuItem
+                  bg="rgba(0,0,0,0.1)"
+                  backdropFilter="blur(25px)"
                   key={notification._id}
                   onClick={() => {
                     setSelectedChat(notification.chat);
@@ -188,12 +212,30 @@ const SideDrawer = () => {
                 src={user.pic}
               />
             </MenuButton>
-            <MenuList>
+            <MenuList
+              bg="rgba(0,0,0,0.1)"
+              backdropFilter="blur(25px)"
+              display="flex"
+              justifyContent="center"
+              position="absolute"
+              right="1rem"
+              top="-3.5rem"
+            >
               <ProfileModal user={user}>
-                <MenuItem>My Profile</MenuItem>
+                <MenuItem bg="rgba(0,0,0,0.1)" backdropFilter="blur(5px)">
+                  Profile
+                </MenuItem>
               </ProfileModal>
-              <MenuDivider />
-              <MenuItem onClick={logoutHandler}>Logout</MenuItem>
+              <div
+                style={{ width: "1px", height: "5px", color: "white" }}
+              ></div>
+              <MenuItem
+                bg="rgba(0,0,0,0.1)"
+                backdropFilter="blur(25px)"
+                onClick={logoutHandler}
+              >
+                Logout
+              </MenuItem>
             </MenuList>
           </Menu>
         </div>

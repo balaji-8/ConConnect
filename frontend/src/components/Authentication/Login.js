@@ -95,8 +95,11 @@ const Login = () => {
         </InputGroup>
       </FormControl>
       <Button
-        colorScheme="blue"
+        bg="rgba(0,0,0,0.1)"
+        backdropFilter="blur(5px)"
+        color="white"
         width="100%"
+        _hover={{ bg: "rgba(0,0,0,0.2)" }}
         style={{ marginTop: 15 }}
         onClick={submitHandler}
         isLoading={loading}
@@ -105,8 +108,11 @@ const Login = () => {
       </Button>
       <Button
         variant="solid"
-        colorScheme="red"
+        bg="rgba(0,0,0,0.1)"
+        backdropFilter="blur(5px)"
+        color="white"
         width="100%"
+        _hover={{ bg: "rgba(0,0,0,0.2)" }}
         onClick={() => {
           setEmail("guest@example.com");
           setPassword("123456");
