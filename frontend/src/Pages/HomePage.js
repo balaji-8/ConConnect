@@ -25,24 +25,34 @@ const HomePage = () => {
   return (
     <Container maxW="xl" centerContent>
       <Box
-        d="flex"
+        display="flex"
         justifyContent="center"
         p={3}
-        bg="white"
+        bg="rgba(0,0,0,0.1)"
+        backdropFilter="blur(5px)"
+        color="white"
         w="100%"
         m="40px 0 15px 0"
         borderRadius="lg"
-        borderWidth="1px"
+        //borderWidth="1px"
       >
         <Text fontSize="4xl" fontFamily="Work sans">
-          Talk-a-Tive
+          ConConnect
         </Text>
       </Box>
-      <Box bg="white" w="100%" p={4} borderRadius="lg" borderWidth="1px">
+      <Box
+        bg="rgba(0,0,0,0.1)"
+        backdropFilter="blur(5px)"
+        color="white"
+        w="100%"
+        p={4}
+        borderRadius="lg"
+        //borderWidth="1px"
+      >
         <Tabs isFitted variant="soft-rounded">
           <TabList mb="1em">
-            <Tab>Login</Tab>
-            <Tab>Sign Up</Tab>
+            <Tab color="white">Login</Tab>
+            <Tab color="white">Sign Up</Tab>
           </TabList>
           <TabPanels>
             <TabPanel>

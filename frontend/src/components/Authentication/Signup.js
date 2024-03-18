@@ -6,6 +6,7 @@ import { VStack } from "@chakra-ui/layout";
 import { useToast } from "@chakra-ui/toast";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { color } from "framer-motion";
 
 const Signup = () => {
   const [show, setShow] = useState(false);
@@ -16,6 +17,7 @@ const Signup = () => {
   const [password, setPassword] = useState();
   const [pic, setPic] = useState();
   const [picLoading, setPicLoading] = useState(false);
+  const [bcolor, setBcolor] = useState("white");
   const toast = useToast();
   const navigate = useNavigate();
 
@@ -185,8 +187,11 @@ const Signup = () => {
         />
       </FormControl>
       <Button
-        colorScheme="blue"
+        bg="rgba(0,0,0,0.1)"
+        backdropFilter="blur(5px)"
+        color={bcolor}
         width="100%"
+        _hover={{ bg: "rgba(0,0,0,0.2)" }}
         style={{ marginTop: 15 }}
         onClick={submitHandler}
         isLoading={picLoading}

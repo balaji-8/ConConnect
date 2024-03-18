@@ -152,6 +152,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
       ) {
         if (!notifications.includes(newMessageRecieved)) {
           setNotifications([newMessageRecieved, ...notifications]);
+          //postNotification(newMessageRecieved);
         }
         setFetchAgain(!fetchAgain);
       } else {
@@ -169,13 +170,17 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
             pb={3}
             px={2}
             w="100%"
+            color="white"
             fontFamily="Work sans"
             display="flex"
             justifyContent={{ base: "space-between" }}
             alignItems="center"
           >
             <IconButton
-              display={{ base: "flex", md: "none" }}
+              display={{ base: "flex" }}
+              bg="rgba(0,0,0,0.1)"
+              backdropFilter="blur(5px)"
+              color="white"
               icon={<ArrowBackIcon />}
               onClick={() => setSelectedChat("")}
             />
@@ -200,7 +205,8 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
             flexDir="column"
             justifyContent="flex-end"
             p={3}
-            bg="#E8E8E8"
+            bg="rgba(0,0,0,0.1)"
+            backdropFilter="blur(5px)"
             w="100%"
             h="100%"
             borderRadius="lg"
@@ -238,8 +244,10 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
                 <></>
               )}
               <Input
-                variant="filled"
-                bg="#E0E0E0"
+                //variant="filled"
+                bg="rgba(0,0,0,0.1)"
+                backdropFilter="blur(5px)"
+                color="white"
                 placeholder="Enter a message.."
                 value={newMessage}
                 onChange={typingHandler}
@@ -254,7 +262,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
           justifyContent="center"
           h="100%"
         >
-          <Text fontSize="3xl" pb={3} fontFamily="Work sans">
+          <Text fontSize="3xl" pb={3} fontFamily="Work sans" color="white">
             Click on a user to start chatting
           </Text>
         </Box>
