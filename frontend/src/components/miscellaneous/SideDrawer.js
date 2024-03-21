@@ -145,8 +145,22 @@ const SideDrawer = () => {
         p="5px 10px 5px 10px"
         // borderWidth="5px"
       >
-        <Tooltip label="Search users to chat" hasArrow placement="bottom-end">
-          <Button variant="ghost" onClick={onOpen}>
+        <Tooltip
+          label="Search users to chat"
+          hasArrow
+          placement="bottom-end"
+          bg="rgba(0,0,0,0.1)"
+          backdropFilter="blur(5px)"
+          color="white"
+        >
+          <Button
+            bg="rgba(0,0,0,0.1)"
+            backdropFilter="blur(5px)"
+            color="white"
+            _hover={{ bg: "rgba(0,0,0,0.2)" }}
+            variant="ghost"
+            onClick={onOpen}
+          >
             <i class="fas fa-search"></i>
             <Text display={{ base: "none", md: "flex" }} px="4" color="white">
               Seach User
@@ -241,10 +255,18 @@ const SideDrawer = () => {
         </div>
       </Box>
 
-      <Drawer placement="left" onClose={onClose} isOpen={isOpen}>
+      <Drawer
+        bg="rgba(0,0,0,0.1)"
+        backdropFilter="blur(25px)"
+        placement="left"
+        onClose={onClose}
+        isOpen={isOpen}
+      >
         <DrawerOverlay />
-        <DrawerContent>
-          <DrawerHeader borderBottomWidth="1px">Search Users</DrawerHeader>
+        <DrawerContent bg="rgba(0,0,0,0.1)" backdropFilter="blur(25px)">
+          <DrawerHeader color="white" borderBottomWidth="1px">
+            Search Users
+          </DrawerHeader>
           <DrawerBody>
             <Box display="flex" pb={2}>
               <Input

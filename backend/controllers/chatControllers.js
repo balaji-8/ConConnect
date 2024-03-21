@@ -146,7 +146,7 @@ const removeFromGroup = asyncHandler(async (req, res) => {
     res.status(400);
     throw new Error("Chat Not Found");
   } else {
-    res.json(added);
+    res.json(removed);
   }
 });
 
